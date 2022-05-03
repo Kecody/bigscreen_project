@@ -16,7 +16,7 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('questions_id');
-            $table->unsignedBigInteger('answerers_id');
+            $table->char('answerers_access_token', 20)->unique()->nullable(false);
             $table->string("answers", 255);
             $table->timestamps();
 
@@ -28,10 +28,10 @@ class CreateAnswersTable extends Migration
             
             //$table->char('answerers_access_token', 20)->unique()->nullable(false);
             //foreign key answerer
-            $table->foreign('answerers_id')
-            ->references('id')
+            $table->foreign('answerers_access_token')
+            ->references('access_token')
             ->on('answerers')
-            ->onDelete('cascade');;  
+            ->onDelete('cascade');  
         });
     }
 
