@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class QuizSeeder extends Seeder
+class AnswererSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,11 +13,6 @@ class QuizSeeder extends Seeder
      */
     public function run()
     {
-       DB::table('quiz')->insert([
-           'id'=>'questions_id',
-       ]);
+        
     }
 }
-// DB::table('quiz')->insert([
-//     'name' =>'Bigscreen'
-// ]);
