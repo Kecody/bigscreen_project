@@ -15,7 +15,7 @@ class CreateAnswerersTable extends Migration
     {
         Schema::create('answerers', function (Blueprint $table) {
             $table->id();
-            $table->char('access_token', 20)->unique()->nullable(false);
+            $table->char('access_token', 32)->unique()->nullable(false);
             $table->string('email', 100)->unique();
             $table->timestamps();
         });

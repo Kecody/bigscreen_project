@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class QuizSeeder extends Seeder
 {
@@ -12,9 +14,12 @@ class QuizSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {//query_builder
        DB::table('quiz')->insert([
-           'id'=>'questions_id',
+           'title'=>'Bigscreen',
+           'description'=>'Sondage casque de réalité virtuel',
+           'url'=> Str::random(40),
+           'status'=>true
        ]);
     }
 }

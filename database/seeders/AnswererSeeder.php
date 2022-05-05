@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Answerer;
 use Illuminate\Database\Seeder;
 
 class AnswererSeeder extends Seeder
@@ -13,6 +14,6 @@ class AnswererSeeder extends Seeder
      */
     public function run()
     {
-        
+        Answerer::factory()->count(20)->create();   
     }
 }
