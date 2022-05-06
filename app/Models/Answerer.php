@@ -13,6 +13,7 @@ class Answerer extends Model
     protected $fillable = [
         'access_token',
         'email',
+        'status',
     ];
     
     public function answers(){
