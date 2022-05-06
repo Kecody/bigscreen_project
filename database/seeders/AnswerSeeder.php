@@ -16,7 +16,7 @@ class AnswerSeeder extends Seeder
      */
     public function run()
     {
-        // $answerer=Answerer::where('access_token')->get();
+    //     $answerer=Answerer::where('access_token')->get();
     //     $answerers = Answerer::all();
     //     $questions = Question::all();
     //     foreach ($answerers as $answerer) {
