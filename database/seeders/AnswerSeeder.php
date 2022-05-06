@@ -16,7 +16,11 @@ class AnswerSeeder extends Seeder
      */
     public function run()
     {
+<<<<<<< HEAD
     //     $answerer=Answerer::where('access_token')->get();
+=======
+        // $answerer=Answerer::where('access_token')->get();
+>>>>>>> seeder_answer
     //     $answerers = Answerer::all();
     //     $questions = Question::all();
     //     foreach ($answerers as $answerer) {
@@ -28,7 +32,11 @@ class AnswerSeeder extends Seeder
     //                     $newAnswer = Answer::create([
     //                         'description' => $description,
     //                         'question_id' => $question->id,
+<<<<<<< HEAD
     //                         'access_token'=> $answerer ->acces_token,
+=======
+    //                         'access_token'=> $answerer->acces_token,
+>>>>>>> seeder_answer
     //                     ]);
     //                     break;
     //                 case 'B':
@@ -36,7 +44,11 @@ class AnswerSeeder extends Seeder
     //                     $newAnswer = Answer::create([
     //                         'description' => $randomAnswer,
     //                         'question_id' => $question->id,
+<<<<<<< HEAD
     //                         'access_token'=> $answerer ->acces_token,
+=======
+    //                         'access_token'=> $answerer->acces_token,
+>>>>>>> seeder_answer
     //                     ]);
     //                     break;
     //                 case 'C':
@@ -44,7 +56,11 @@ class AnswerSeeder extends Seeder
     //                     $newAnswer = Answer::create([
     //                         'description' => $randomNumber,
     //                         'question_id' => $question->id,
+<<<<<<< HEAD
     //                         'access_token'=> $answerer ->acces_token,
+=======
+    //                         'access_token'=> $answerer->acces_token,
+>>>>>>> seeder_answer
     //                     ]);
     //                     break;
     //                 default:
@@ -53,7 +69,12 @@ class AnswerSeeder extends Seeder
     //             $newAnswer->save();
     //         }   
     //     }
+<<<<<<< HEAD
     // $a->status = true;
     // $quiz->save();
+=======
+    // $answerer->status = true;
+    // $answerer->save();
+>>>>>>> seeder_answer
     }
 } 
