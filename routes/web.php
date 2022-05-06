@@ -14,6 +14,6 @@ use App\Http\Controllers\FrontController;
 |
 */
 
-Route::get('/front', FrontController::class, 'index');
+// Route::get('/front', FrontController::class, 'index');
 
-Route::get('/front/{access_token}', FrontController::class, 'getAnswerer');
+// Route::get('/front/{access_token}', FrontController::class, 'getAnswerer');

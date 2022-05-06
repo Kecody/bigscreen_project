@@ -17,6 +17,7 @@ class CreateAnswerersTable extends Migration
             $table->id();
             $table->char('access_token', 32)->unique()->nullable(false);
             $table->string('email', 100)->unique();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
