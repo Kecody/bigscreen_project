@@ -15,17 +15,19 @@ class AnswerSeeder extends Seeder
      */
     public function run()
     {
-       Question::factory()->count(5)->create();
-       Question::factory()->count(15)->create()->each(function($quiz) {  
-            foreach ($questions as $key => $question) {
+        $answerer=Answerer::where('access_token')->get();
+        $answerers = Answerer::all();
+        $questions = Question::all();
+        foreach ($answerers as $answerer) {
+           foreach ($questions as $question) {
                 switch ($question->type) {
                     case 'A':
                         $choices = json_decode($question->choices);
                         $description = $choices[rand(0, count($choices) -1)];
-                        $newAswer = Answer::create([
+                        $newAnswer = Answer::create([
                             'description' => $description,
                             'question_id' => $question->id,
-                            'quiz_id'=> $quiz ->id,
+                            'access_token'=> $answerer->acces_token,
                         ]);
                         break;
                     case 'B':
@@ -33,7 +35,7 @@ class AnswerSeeder extends Seeder
                         $newAnswer = Answer::create([
                             'description' => $randomAnswer,
                             'question_id' => $question->id,
-                            'quiz_id'=> $quiz ->id,
+                            'access_token'=> $answerer->acces_token,
                         ]);
                         break;
                     case 'C':
@@ -41,17 +43,16 @@ class AnswerSeeder extends Seeder
                         $newAnswer = Answer::create([
                             'description' => $randomNumber,
                             'question_id' => $question->id,
-                            'quiz_id'=> $quiz ->id,
+                            'access_token'=> $answerer->acces_token,
                         ]);
                         break;
                     default:
                         break;        
                 }
                 $newAnswer->save();
-            } 
-            
-            $quiz->status = true;
-            $quiz->save();
-       });
+            }   
+        }
+    $answerer->status = true;
+    $answerer->save();
     }
 }
