@@ -14,7 +14,8 @@ class AnswerFactory extends Factory
     public function definition()
     {
         return [
-                'answerer_access_token'=> $this->faker->md5(),
+                'questions_id'=> $this->faker,
+                'answerers_access_token'=> $this->faker->md5(),
                 'answers' => $this->faker->sentence(),
         ];
     }

@@ -15,8 +15,8 @@ class QuestionSeeder extends Seeder
     public function run()
     {
         DB::table('questions')->insert([
-            //Ajout manuelle de la question email
-            [//2
+          
+            [//1
               'title'=> 'Question 1/20',
               'description' => 'Votre email',
               'type' => 'B',
