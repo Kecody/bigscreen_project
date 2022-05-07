@@ -53,7 +53,7 @@ class AnswerSeeder extends Seeder
     //             $newAnswer->save();
     //         }   
     //     }
-    // $aanswerer->status = true;
+    // $answerer->status = true;
     // $answerer->save();
     }
 } 
