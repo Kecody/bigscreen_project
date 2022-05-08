@@ -17,3 +17,7 @@ Auth::routes();
 // Route::get('/front', FrontController::class, 'index');
 
 // Route::get('/front/{access_token}', FrontController::class, 'getAnswerer');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

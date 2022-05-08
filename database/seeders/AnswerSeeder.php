@@ -21,8 +21,6 @@ class AnswerSeeder extends Seeder
         $answerers = Answerer::all();
         $questions = Question::all();
         foreach ($answerers as $answerer) {// on parcours tous les answerers
-            $answererstatus = $answerer->status;
-            if($answererstatus = false){
             foreach ($questions as $question) {// on parcours toutes les questions 
                     switch ($question->type) { // on créer des réponses auto trié par type
                         case 'A':
@@ -31,7 +29,7 @@ class AnswerSeeder extends Seeder
                             $newAnswer = Answer::create([
                                 'answers' => $answers,
                                 'questions_id' => $question->id,
-                                // 'answerers_access_token'=> $answerer ->access_token,
+                                'id'=> $answerer ->id,
                             ]);
                             break;
                         case 'B':
@@ -39,7 +37,7 @@ class AnswerSeeder extends Seeder
                             $newAnswer = Answer::create([
                                 'answers' => $randomAnswer,
                                 'questions_id' => $question->id,
-                                // 'answerers_access_token'=> $answerer ->access_token,
+                                'id'=> $answerer ->id,
                             ]);
                             break;
                         case 'C':
@@ -47,21 +45,26 @@ class AnswerSeeder extends Seeder
                             $newAnswer = Answer::create([
                                 'answers' => $randomNumber,
                                 'questions_id' => $question->id,
-                                // 'answerers_access_token'=> $answerer ->access_token,
+                                'id'=> $answerer ->id,
                             ]);
                             break;       
                         default:
                             break;
-                    }
-                }        
+                    }        
                 $newAnswer->save();
             }
-        // $answerersaccesstoken = Answerer::insert('access_token')->where('answerers_access_token');           
-        // $answereraccesstoken = Answer::insert(['answerers_access_token'=> $answerer->acces_token]);             
+            // $answerersAccessToken = Answerer::get('id');  
+            // // dd($answerersAccessToken);         
+            // $answererRespond = Answer::insert([
+            //     'answerer_access_token'=> $answerer ->id,
+            //     'answers'=>$newAnswer,
+            //     'questions_id' => $question->id,
+            // ]);
+            // $answereraccesstoken = Answer::insert(['answerers_access_token'=> $answerer->acces_token]);             
         }
         // $newAnswersAll = $this->newAnswer->all();
         // $answersAnswerer = $this->answerers->aa;
-        // $answersAnswerer->save();  
-        // $answerer->status = true;
+        $answerer->status = true;
+        $answerer->save();  
     }
 } 
