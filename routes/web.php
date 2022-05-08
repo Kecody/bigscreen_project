@@ -13,7 +13,7 @@ use App\Http\Controllers\FrontController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 // Route::get('/front', FrontController::class, 'index');
 
 // Route::get('/front/{access_token}', FrontController::class, 'getAnswerer');
