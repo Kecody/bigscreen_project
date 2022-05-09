@@ -9,25 +9,7 @@
     @stack('head')
 </head>
 <body>
-    <div id="sidebar">
-        <img src="{{asset('img/bigscreen_logo.png')}}" alt="logo bigscreen">
-        <a href="{{route('admin')}}">Accueil</a>
-        <a href="{{route('admin_questions')}}">Questionnaire</a>
-        <a href="{{route('admin_answers')}}">Réponses</a>
-        <div id="logout-wrapper">
-            <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-    
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-            <!--script-->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-        </div>
-    </div>
+ 
     @yield('content')
 </body>
 </html>

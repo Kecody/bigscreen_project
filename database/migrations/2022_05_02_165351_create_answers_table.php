@@ -16,7 +16,7 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('questions_id');
-            $table->char('answerers_access_token', 32)->unique()->nullable(true);
+            $table->char('answerers_access_token', 32)->nullable(false); // n'est pas oblige d'etre unique car ce n'est pas une foreign key
             $table->string("answers", 255);
             $table->timestamps();
 
