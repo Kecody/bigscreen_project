@@ -16,60 +16,37 @@ class AnswerSeeder extends Seeder
      */
     public function run()
     {
-//      // $answerer=Answerer::where('access_token')->get();
+     // $answerer=Answerer::where('access_token')->get();
         $faker = \Faker\Factory::create();
         $answerers = Answerer::all();
         $questions = Question::all();
         foreach ($answerers as $answerer) {// on parcours tous les answerers
-            foreach ($questions as $question) {// on parcours toutes les questions 
+            foreach ($questions as $question) { // on parcours toutes les questions 
+                    $newAnswer = new Answer();
+                        $newAnswer -> questions_id = $question->id;
+                        $newAnswer -> answerers_access_token = $answerer->access_token;
                     switch ($question->type) { // on créer des réponses auto trié par type
                         case 'A':
                             $choices = json_decode($question->choices);
                             $answers = $choices[rand(0, count($choices)-1)];
-                            $newAnswer = Answer::create([
-                                'answers' => $answers,
-                                'questions_id' => $question->id,
-                                'answers_answerers_id'=> $answerer->answerers_id,
-                            ]);
+                            $newAnswer -> answers = $answers;//set
                             break;
                         case 'B':
                             $randomAnswer = $faker-> sentence($nbWords = 6, $variableNbWords = true);
-                            $newAnswer = Answer::create([
-                                'answers' => $randomAnswer,
-                                'questions_id' => $question->id,
-                                'answers_answerers_id'=> $answerer->answerers_id,
-                            ]);
+                            $newAnswer -> answers = $randomAnswer;//set
                             break;
                         case 'C':
                             $randomNumber = rand(1, 5);
-                            $newAnswer = Answer::create([
-                                'answers' => $randomNumber,
-                                'questions_id' => $question->id,
-                                'answers_answerers_id'=> $answerer->answerers_id,
-                            ]);
+                            $newAnswer -> answers = $randomNumber;//set
                             break;       
                         default:
                             break;
                     }        
-                  $newAnswer->save();
+                $newAnswer->save();
             }
-            $answerer->status = true;
-            $answerer->get('access_token');
-            dd($answerer);
-            // $answerersAccessToken = Answerer::get('answerers_id');  
-            // // // dd($answerersAccessToken);         
-            // $answererRespond = Answer::insert([
-            //     'answerers_access_token'=> $answerer ->access_token,
-            //     'answers'=>$newAnswer,
-            //     'questions_id' => $question->id,
-            // ]);
-            // $answereraccesstoken = Answer::insert(['answerers_access_token'=> $answerer->acces_token]);             
-            // $answerer->status = true;      
-        }
-        
-        
-        // $newAnswersAll = $this->newAnswer->all();
-        // $answersAnswerer = $this->answerers->aa;
-        // $answererRespond->save();
+        $answerer->status = true;
+        $answerer->save(); 
+        }        
     }
 } 
+///validated code

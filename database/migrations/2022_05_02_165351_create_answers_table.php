@@ -17,7 +17,7 @@ class CreateAnswersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('questions_id');
             $table->unsignedBigInteger('answers_answerers_id');
-            $table->char('answerers_access_token', 32)->unique()->nullable(true);
+            $table->char('answerers_access_token', 32)->nullable(true);
             $table->string("answers", 255);
             $table->timestamps();
 
@@ -32,13 +32,11 @@ class CreateAnswersTable extends Migration
             ->references('access_token')
             ->on('answerers')
             ->onDelete('cascade'); 
-            //foreign key answerer id
+        //foreign key answerer id
             $table->foreign('answers_answerers_id')
             ->references('answerers_id')
             ->on('answerers')
-            ->onDelete('cascade'); 
-            
-            
+            ->onDelete('cascade');    
         });
     }
 
