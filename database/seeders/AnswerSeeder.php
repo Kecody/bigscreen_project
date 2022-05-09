@@ -16,7 +16,7 @@ class AnswerSeeder extends Seeder
      */
     public function run()
     {
-//         // $answerer=Answerer::where('access_token')->get();
+//      // $answerer=Answerer::where('access_token')->get();
         $faker = \Faker\Factory::create();
         $answerers = Answerer::all();
         $questions = Question::all();
@@ -29,7 +29,7 @@ class AnswerSeeder extends Seeder
                             $newAnswer = Answer::create([
                                 'answers' => $answers,
                                 'questions_id' => $question->id,
-                                'id'=> $answerer ->id,
+                                'answers_answerers_id'=> $answerer->answerers_id,
                             ]);
                             break;
                         case 'B':
@@ -37,7 +37,7 @@ class AnswerSeeder extends Seeder
                             $newAnswer = Answer::create([
                                 'answers' => $randomAnswer,
                                 'questions_id' => $question->id,
-                                'id'=> $answerer ->id,
+                                'answers_answerers_id'=> $answerer->answerers_id,
                             ]);
                             break;
                         case 'C':
@@ -45,26 +45,31 @@ class AnswerSeeder extends Seeder
                             $newAnswer = Answer::create([
                                 'answers' => $randomNumber,
                                 'questions_id' => $question->id,
-                                'id'=> $answerer ->id,
+                                'answers_answerers_id'=> $answerer->answerers_id,
                             ]);
                             break;       
                         default:
                             break;
                     }        
-                $newAnswer->save();
+                  $newAnswer->save();
             }
-            // $answerersAccessToken = Answerer::get('id');  
-            // // dd($answerersAccessToken);         
+            $answerer->status = true;
+            $answerer->get('access_token');
+            dd($answerer);
+            // $answerersAccessToken = Answerer::get('answerers_id');  
+            // // // dd($answerersAccessToken);         
             // $answererRespond = Answer::insert([
-            //     'answerer_access_token'=> $answerer ->id,
+            //     'answerers_access_token'=> $answerer ->access_token,
             //     'answers'=>$newAnswer,
             //     'questions_id' => $question->id,
             // ]);
             // $answereraccesstoken = Answer::insert(['answerers_access_token'=> $answerer->acces_token]);             
+            // $answerer->status = true;      
         }
+        
+        
         // $newAnswersAll = $this->newAnswer->all();
         // $answersAnswerer = $this->answerers->aa;
-        $answerer->status = true;
-        $answerer->save();  
+        // $answererRespond->save();
     }
 } 

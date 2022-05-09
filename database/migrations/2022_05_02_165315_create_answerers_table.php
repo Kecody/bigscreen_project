@@ -14,7 +14,7 @@ class CreateAnswerersTable extends Migration
     public function up()
     {
         Schema::create('answerers', function (Blueprint $table) {
-            $table->id();
+            $table->id('answerers_id');
             $table->char('access_token', 32)->unique()->nullable(true);
             $table->string('email', 100)->unique();
             $table->boolean('status')->default(false);
