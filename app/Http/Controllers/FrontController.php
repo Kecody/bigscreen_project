@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-
-use App\Models\Question;
-use App\Models\Answerer;
 use App\Models\Answer;
+use App\Models\Answerer;
+use App\Models\Question;
+
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\FrontController;
 
 class FrontController extends Controller
 {
@@ -17,6 +18,8 @@ class FrontController extends Controller
     /// Affichage des questions dans le formulaire
     public function index()
     {
+        return view('front.quizForm', ['questions' => Question::all()]);  
+
     //     $questions = Question::with('answers')->get();
     //     $questionsAnswered = [];
     //     foreach ($questions as $question) {
@@ -63,4 +66,14 @@ class FrontController extends Controller
     //         'answers'=> $answererResult
     //     ]]);
     }
+
+    public function message()
+    {
+        return view('front.quizUrl', ['questions' => Question::all()]);
+    }  
+    
+    public function result()
+    {
+        return view('front.quizResult', ['questions' => Question::all()]);
+    }    
 }

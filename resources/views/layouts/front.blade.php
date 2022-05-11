@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body>
-    @yield('content')
+    <div class ="container mt-3">
+        <div class ="row">
+            @yield('content')
+        </div>
+    </div>
 </body>
 </html>
