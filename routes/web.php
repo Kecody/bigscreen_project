@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontController;
 
 
@@ -30,16 +31,19 @@ Route::get('/result', [FrontController::class, 'result'])->name('result');
 
 // Route::get('/front/{access_token}', FrontController::class, 'getAnswerer');
 
-Auth::routes();
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Auth::routes();
 
 
 /////////////////////admin
 Route::prefix('admin')->group(function(){
 
-    Route::get('/home', [AdminController::class, 'echart'])->name('stats');
+    Route::get('/', [AdminController::class, 'logged'])->name('admin');
+    
+    Route::get('/home', [AdminController::class, 'graphdata'])->name('stats');
     
     Route::get('/quiz', [AdminController::class, 'questions'])->name('form');
 

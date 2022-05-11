@@ -10,10 +10,14 @@
     @stack('head')
 </head>
 <body>
-    @include('incs.navbar')
-    <div class ="container mt-3">
-        <div class ="row">
+    <div class="container-fluid mx-0">
+        <div class="row">
+          <div class="col-2 ml-0 p-0">
+            @include('incs.navbar')
+          </div>
+          <div class="col-10 mr-0 p-0">
             @yield('content') 
+          </div>
         </div>
     </div>
 </body>
