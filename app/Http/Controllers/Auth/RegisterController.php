@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/logged';
+    protected $redirectTo ='admin';
 
     /**
      * Create a new controller instance.
@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => User::USER_ROLE
+            'role' => User::CUSTOMER_ROLE
         ]);
     }
 }

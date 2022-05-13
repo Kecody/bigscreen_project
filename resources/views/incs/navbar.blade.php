@@ -1,5 +1,4 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark vh-100">
-    <a href="/" class="d-flex align-items-centermb-3 mb-md-0  text-white text-decoration-none">
+<a href="/" class="d-flex align-items-center mb-3 mb-md-0 text-white text-decoration-none">
       <img class ="mx-auto" src="{{asset('img/logo_bigscreen.png')}}" alt="logo bigscreen">
     </a>
     <hr>
@@ -36,7 +35,6 @@
           {{-- <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button> --}}
       </li>
     </ul>
-</div>
-<nav class = ""></nav>
+
 
 

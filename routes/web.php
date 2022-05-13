@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\CustomerController;
 
 
 ///default route
@@ -50,3 +51,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/answer_user', [AdminController::class, 'answersUsers'])->name('answer');
 
 });
+
+
+/////customer
+
+Route::get('customer/customerhome', [CustomerController::class, 'customerHome'])->name('home');

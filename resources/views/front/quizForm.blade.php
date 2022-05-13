@@ -5,10 +5,13 @@ BigScreen - Questionnnaire
 @endsection
 
 @section('content')
-<form>
+<form class ="bg-secondary pt-3">
     <fieldset>
-      <h1>BIGSCREEN</h1>
-      <legend></legend>
+      <div class="bg-dark m-2 p-3 rounded">
+        <img class ="mx-auto mt-2" src="{{asset('img/logo_bigscreen.png')}}" alt="logo bigscreen">
+        <legend></legend>
+        <h4 class ="my-4 text-center text-info">Merci de répondre à toute les questions et de valider en fin de formulaire</h4>
+      
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
@@ -109,6 +112,7 @@ BigScreen - Questionnnaire
           <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
       </fieldset>
       <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
     </fieldset>
   </form>  
 @endsection

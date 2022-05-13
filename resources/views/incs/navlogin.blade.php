@@ -1,8 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand hidden" href="{{ url('/') }}">
             {{ config('app.name', 'Bigscreen') }}
         </a>
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 text-white text-decoration-none">
+      <img class ="mx-auto" src="{{asset('img/logo_bigscreen.png')}}" alt="logo bigscreen">
+    </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -9,7 +9,7 @@
     <link href="{{asset('css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class ="container mt-3">
+    <div class ="container">
         <div class ="row">
             @yield('content')
         </div>
