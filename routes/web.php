@@ -23,7 +23,7 @@ Route::get('/', function () {
 |
 */
 /////////////////front routes
-Route::get('/', [FrontController::class, 'index'])->name('quiz');
+Route::get('/', [FrontController::class, 'quiz'])->name('quiz');
 
 Route::get('/message',[FrontController::class, 'message'])->name('message');
 
@@ -46,7 +46,9 @@ Route::prefix('admin')->group(function(){
     
     Route::get('/home', [AdminController::class, 'graphdata'])->name('stats');
     
-    Route::get('/quiz', [AdminController::class, 'questions'])->name('form');
+    Route::get('/quiz', [AdminController::class, 'quiz'])->name('forms');
+    
+    Route::get('/questions', [AdminController::class, 'questions'])->name('form');
 
     Route::get('/answer_user', [AdminController::class, 'answersUsers'])->name('answer');
 
@@ -55,4 +57,4 @@ Route::prefix('admin')->group(function(){
 
 /////customer
 
-Route::get('customer/customerhome', [CustomerController::class, 'customerHome'])->name('home');
+// Route::get('customer/customerhome', [CustomerController::class, 'customerHome'])->name('home');

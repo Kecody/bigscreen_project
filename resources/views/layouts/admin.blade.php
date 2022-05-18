@@ -12,13 +12,16 @@
 <body>
     <div class="container-fluid mx-0">
         <div class="row">
-          <div class="col-2 ml-0 p-3 text-white bg-dark vh-100">
+          <div class="col-2 ml-0 p-3 text-white bg-dark overflow-auto vh-100">
             @include('incs.navbar')
           </div>
-          <div class="col-10 mr-0 p-0">
+          <div class="col-10 mr-0 p-0 vh-100 overflow-auto">
             @yield('content') 
           </div>
         </div>
     </div>
+    <!--script-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ asset('js/chart.js')}}"></script>
 </body>
 </html>

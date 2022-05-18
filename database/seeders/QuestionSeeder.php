@@ -34,7 +34,7 @@ class QuestionSeeder extends Seeder
               'title'=> 'Question 3/20',
               'description' => 'Votre sexe',
               'type' => 'A',
-              'choices' =>  json_encode(['Homme', 'Femme', 'Préfère de pas répondre']),
+              'choices' =>  json_encode(['Homme', 'Femme', 'Préfère ne pas répondre']),
               'quiz_id' => 1  
             ],
             [//4

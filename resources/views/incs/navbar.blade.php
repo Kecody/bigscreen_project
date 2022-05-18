@@ -15,7 +15,7 @@
         <a class="nav-link" href="{{route('answer')}}">Réponses</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Quiz</a>
+        <a class="nav-link" href="{{route('forms')}}">Quiz</a>
       </li>
       <hr class= "mb-5">
       <li class="nav-item">

@@ -111,7 +111,7 @@ BigScreen - Questionnnaire
           <label for="customRange3" class="form-label">Example range</label>
           <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
       </fieldset>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" name="valider">Valider</button>
     </div>
     </fieldset>
   </form>  

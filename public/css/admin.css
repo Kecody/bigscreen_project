@@ -28,3 +28,7 @@ a.nav-link:active {
 .col-2 {
     height: 100%;
 }
+
+table {
+    border-radius: 15px;
+}

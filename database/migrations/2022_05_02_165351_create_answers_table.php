@@ -15,14 +15,14 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('questions_id');
+            $table->unsignedBigInteger('question_id');
             // $table->unsignedBigInteger('answers_answerers_id');
             $table->char('answerers_access_token', 32)->nullable(false); // n'est pas oblige d'etre unique car ce n'est pas une foreign key
             $table->string("answers", 255);
             $table->timestamps();
 
             //foreign key questions
-            $table->foreign('questions_id')
+            $table->foreign('question_id')
             ->references('id')
             ->on('questions')
             ->onDelete('cascade');  

@@ -24,6 +24,6 @@ class Answer extends Model
     
     public function answerer(){
         
-        return $this->belongsTo(Answerer::class, 'answerers_access_token');
+        return $this->belongsTo(Answerer::class,'access_token', 'answerers_access_token' );
     }
 }

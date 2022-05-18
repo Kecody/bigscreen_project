@@ -8,7 +8,7 @@ BigScreen - Administration
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-header text-center">{{ __('Dashboard') }}</div>
                 <div class="card-body text-center">
                     @if (session('status'))

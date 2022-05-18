@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Quiz extends Model
 {
     use HasFactory;
+
+    protected $table = 'quiz';
     
     protected $fillable = [
         'title',
@@ -20,4 +22,6 @@ class Quiz extends Model
     public function questions(){
          return $this->hasMany(Question::class);
     }
+
+    
 }

@@ -23,7 +23,7 @@ class AnswerSeeder extends Seeder
         foreach ($answerers as $answerer) {// on parcours tous les answerers
             foreach ($questions as $question) { // on parcours toutes les questions 
                     $newAnswer = new Answer();
-                        $newAnswer -> questions_id = $question->id;
+                        $newAnswer -> question_id = $question->id;
                         $newAnswer -> answerers_access_token = $answerer->access_token;
                     switch ($question->type) { // on créer des réponses auto trié par type
                         case 'A':
