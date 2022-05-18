@@ -1,35 +1,143 @@
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+import Chart from 'chart.js';
+
+const pie6 = document.getElementById('pie-6').getContext('2d')
+const pie7 = document.getElementById('pie-7').getContext('2d')
+const pie10 = document.getElementById('pie-10').getContext('2d')
+const radar = document.getElementById('radar').getContext('2d')
+
+//max 7 colors
+const getRandomColor = (number) => {
+    const returnedColor = []
+    let colorArray = [
+        '#cd80d7',
+        '#86c1a2',
+        '#eee72b',
+        '#7b5181',
+        '#26abab',
+        '#4526ab',
+    ]
+    if(number === 1){
+        const randomNumber = Math.floor(Math.random() * Math.floor(colorArray.length))
+        return colorArray[randomNumber]
+    }
+    else{
+        for (let index = 0; index < number; index++) {
+            if(colorArray.length > 0){
+                const randomNumber = Math.floor(Math.random() * Math.floor(colorArray.length))
+                returnedColor.push(colorArray[randomNumber])
+                colorArray = colorArray.filter((color) => color !== colorArray[randomNumber])
             }
         }
     }
+    return returnedColor
+}
+
+const transformDataToChartData = (data) => {
+    const dataCount = []
+    const dataLibelle = []
+    data.stats.forEach(statChoice => {
+        dataLibelle.push(statChoice.libelle)
+        dataCount.push(statChoice.count)
+    });
+    return {
+        datasets: [{
+            data: dataCount,
+            backgroundColor: data.type === 'radar' ? getRandomColor(1) : getRandomColor(data.stats.length),
+            label: data.label,
+        }],
+        labels: dataLibelle,
+    }
+}
+
+const pieChart6 = new Chart(
+    pie6, {
+    type: graphData[0].type,
+    options: {
+        legend: {
+            labels: {
+                fontColor: 'white'
+            },
+        },
+        title: {
+            display: true,
+            text: graphData[0].libelle,
+            color: 'white',
+            fontSize: '17',
+            fontColor: 'white'
+        },
+    },
+    data: transformDataToChartData(graphData[0]),
+});
+const pieChart7 = new Chart(
+    pie7, {
+    type: graphData[1].type,
+    options: {
+        legend: {
+            labels: {
+                fontColor: 'white'
+            },
+        },
+        title: {
+            display: true,
+            text: graphData[1].libelle,
+            color: 'white',
+            fontSize: '17',
+            fontColor: 'white'
+        },
+    },
+    data: transformDataToChartData(graphData[1]),
+});
+const pieChart10 = new Chart(
+    pie10, {
+    type: graphData[2].type,
+    options: {
+        legend: {
+            labels: {
+                fontColor: 'white'
+            },
+        },
+        title: {
+            display: true,
+            text: graphData[2].libelle,
+            color: 'white',
+            fontSize: '17',
+            fontColor: 'white'
+        },
+    },
+    data: transformDataToChartData(graphData[2]),
+});
+const radarChart = new Chart(
+    radar, {
+    type: graphData[3].type,
+    options: {
+        legend: {
+            labels: {
+                fontColor: 'white'
+            },
+        },
+        title: {
+            display: true,
+            text: graphData[3].libelle,
+            color: 'white',
+            fontSize: '17',
+            fontColor: 'white'
+        },
+        scale: {
+            gridLines: {
+                color: 'rgba(255, 255, 255, .4)',
+                fontColor: 'white',
+            },
+            ticks: {
+                showLabelBackdrop: false,
+                min: 0,
+                max: 5,
+                stepSize: 1,
+                fontColor: 'white',
+            },
+            pointLabels: {
+                fontColor: 'white'
+            }
+        },
+    },
+    data: transformDataToChartData(graphData[3]),
 });

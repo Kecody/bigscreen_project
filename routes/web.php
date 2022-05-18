@@ -23,7 +23,8 @@ Route::get('/', function () {
 |
 */
 /////////////////front routes
-Route::get('/', [FrontController::class, 'quiz'])->name('quiz');
+
+Route::any('/{url}', [FrontController::class, 'quiz'])->name('quiz');
 
 Route::get('/message',[FrontController::class, 'message'])->name('message');
 

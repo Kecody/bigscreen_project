@@ -22,21 +22,87 @@ class AdminController extends Controller
         return  view('admin.logged');  
     }
 
+     //////////////////////\\\\\\\\\\\\\\\\\\\\
+     ////////////////Chart\\\\\\\\\\\\\\\\\\\\\
+     ////////////////////\\\\\\\\\\\\\\\\\\\\\\\
 
     public function graphdata()
     {
-        //////////////////////\\\\\\\\\\\\\\\\\\\\
-        ////////////////Chart\\\\\\\\\\\\\\\\\\\\\
-        ////////////////////\\\\\\\\\\\\\\\\\\\\\\\
-        
+        $graphData = [];
 
+        array_push($graphData, $this->getStatFromIdQuestionForPieChart(5));
+        array_push($graphData, $this->getStatFromIdQuestionForPieChart(6));
+        array_push($graphData, $this->getStatFromIdQuestionForPieChart(9));
+        array_push($graphData, $this->getStatFromIdQuestionForRadarChart(
+        [
+            [
+                'id' => 10,
+                'description' => "Qualité de l'image",
+            ],
+            [
+                'id' => 11,
+                'description' => "Confort d'utilisation",
+            ],
+            [
+                'id' => 12,
+                'description' => "Connection réseau",
+            ],
+            [
+                'id' => 13,
+                'description' => "Qualité des graphisme",
+            ],
+            [
+                'id' => 14,
+                'description' => "Qualité audio",
+            ],
+        ], "Qualité"));
 
+        return view('admin.home', ['graphData' => $graphData]);
+    }
 
+    private function getStatFromIdQuestionForPieChart($id){
+        $question = Question::where('id', $id)->first();
+        // dd($question);
+        $stats = [];
+        foreach (($question->choice) as $choice) {
+            $count = $question->answer()->where('description', $choice)->count();
+            $statChoice = [
+                'description' => $choice,
+                'count' => $count,
+            ];
+            array_push($stats, $statChoice);
+        }
 
+        return [
+            'stats' => $stats,
+            'description' => $question->description,
+            'type' => 'pie'
+        ];
+    }
+    private function getStatFromIdQuestionForRadarChart(array $questions, string $description){
+        $stats = [];
+        $total = Answerer::where('status', true)->count(); // Total de formulaires remplis
+        foreach ($questions as $question) {
+            $count = 0;
+            $answers = Answer::where('question_id', $question['id'])->get();
+            foreach ($answers as $answer) {
+                $count += $answer->answers; // On additionne les points de tous les formulaires pour chaque question
+            }
+            $count = round( ($count / count($answers) ), 2 ); // MOYENNE
+            $result = [
+                'description' => $question['description'],
+                'count' => $count,
+            ];
+            array_push($stats, $result);
+        }
+        return [
+            'stats' => $stats,
+            'description' => $description,
+            'label' => "Moyenne sur $total personnes",
+            'type' => 'radar'
+        ];
 
-
-
-        return  view('admin.home');
+        return  view('admin.home', ['graphData' => $graphData]);
     }
     //////////////////////\\\\\\\\\\\\\\\\\\\\\\\
     /////////////////Question\\\\\\\\\\\\\\\\\\\\\
