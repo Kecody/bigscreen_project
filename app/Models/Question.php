@@ -15,6 +15,10 @@ class Question extends Model
         'type',
         'choices'
     ];
+    // protected $guarded = ['id']; 
+    // protected $casts = [
+    //     'choices' => 'array'
+    // ];
 
     public function answer(){
 

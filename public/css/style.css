@@ -13,3 +13,8 @@ img {
     font-weight: bold;
     font-size: 1.8rem;
 }
+.text-blue {
+    color:#49b2b1;
+    font-weight: bold;
+    word-spacing: .5rem;
+}

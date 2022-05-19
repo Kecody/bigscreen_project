@@ -17,11 +17,11 @@ class FrontController extends Controller
 {
 
     /// Affichage des questions dans le formulaire
-    public function quiz(string $token)
+    public function quiz()
     {
-        $quiz = Quiz::where('url', $token)->first();
+        // $quiz = Quiz::where('url', $token)->first();
         
-        return view('front.quizUrl', ['questions' => Question::all()]);
+        return view('front.quizForm', ['questions' => Question::all()]);
     }
     public function message()
     {

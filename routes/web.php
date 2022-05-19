@@ -23,9 +23,9 @@ Route::get('/', function () {
 |
 */
 /////////////////front routes
-Route::get('/', [FrontController::class, 'quiz'])->name('quiz');
+Route::get('/quiz', [FrontController::class, 'quiz'])->name('quiz');
 
-Route::get('/message',[FrontController::class, 'message'])->name('message');
+Route::post('/message',[FrontController::class, 'message'])->name('message');
 
 Route::get('/result', [FrontController::class, 'result'])->name('result');
 // Route::get('/front', FrontController::class, 'index');
