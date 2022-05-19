@@ -24,7 +24,7 @@ Route::get('/', function () {
 */
 /////////////////front routes
 
-Route::any('/{url}', [FrontController::class, 'quiz'])->name('quiz');
+Route::any('/quiz', [FrontController::class, 'quiz'])->name('quiz');
 
 Route::get('/message',[FrontController::class, 'message'])->name('message');
 
@@ -43,7 +43,7 @@ Auth::routes();
 /////////////////////admin
 Route::prefix('admin')->group(function(){
 
-    Route::get('/', [AdminController::class, 'logged'])->name('admin');
+    Route::get('/logged', [AdminController::class, 'logged'])->name('admin');
     
     Route::get('/home', [AdminController::class, 'graphdata'])->name('stats');
     

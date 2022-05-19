@@ -59,13 +59,15 @@ class AdminController extends Controller
 
         return view('admin.home', ['graphData' => $graphData]);
     }
-
+    
     private function getStatFromIdQuestionForPieChart($id){
-        $question = Question::where('id', $id)->first();
+        // $id = [6,7,10];
+        $question = Question::all();
         // dd($question);
         $stats = [];
-        foreach (($question->choice) as $choice) {
-            $count = $question->answer()->where('description', $choice)->count();
+        $choices = json_decode($question->choices);
+        foreach ((array) $choices as $choice) {
+            $count = $question->answers()->where('description', $choice)->count();
             $statChoice = [
                 'description' => $choice,
                 'count' => $count,
@@ -74,6 +76,7 @@ class AdminController extends Controller
         }
 
         return [
+            // 'id'=>$id,
             'stats' => $stats,
             'description' => $question->description,
             'type' => 'pie'
@@ -86,14 +89,16 @@ class AdminController extends Controller
             $count = 0;
             $answers = Answer::where('question_id', $question['id'])->get();
             foreach ($answers as $answer) {
-                $count += $answer->answers; // On additionne les points de tous les formulaires pour chaque question
+                $count += ($answer->answer); // On additionne les points de tous les formulaires pour chaque question
+                dd($count);
             }
             $count = round( ($count / count($answers) ), 2 ); // MOYENNE
             $result = [
                 'description' => $question['description'],
                 'count' => $count,
             ];
-            array_push($stats, $result);
+            $stats = [$result];
+             
         }
         return [
             'stats' => $stats,
